@@ -1,0 +1,10 @@
+startup_message off
+hardstatus alwayslastline "%{gk}[%{G}%H%{g}][%=%{wk}%?%-Lw%?%{R}[%{W}%n*%t%?(%u)%?%{R}]%{w}%?%+Lw%?%?%=%{g}][%{B}%m/%d %{G}%C%a%{g}]"
+#caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%< %{=b BW} %H %{-} %l %c %d/%m/%Y"
+bindkey ^[, prev
+bindkey ^[; next
+shelltitle ""
+autodetach on
+defscrollback 65000
+#screen -t "log" 0 tail -F /var/log/messages
+#screen -t "errors" 1 sh -c "tail -F /var/log/httpd/*error*.log"
