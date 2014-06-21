@@ -10,10 +10,9 @@ Bundle 'altercation/vim-colors-solarized'
 set number
 syntax enable
 set background=dark
-"let g:solarized_termcolors = 256
 if !has("gui_running")
     let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
+"    let g:solarized_termcolors=256 " Needed for OS X Terminal.app
 endif
 colorscheme solarized
 
@@ -45,14 +44,30 @@ set expandtab
 "nnoremap <space> za
 "vnoremap <space> zf
 set pastetoggle=<F2>
-nnoremap <F3> :set nonumber!<CR>
 
+nnoremap <F3> :set nonumber!<CR>
 
 filetype plugin on
 " Real tabs in JS as well
 autocmd FileType js setlocal noexpandtab shiftwidth=4 omnifunc=javascriptcomplete
 
-Bundle 'SuperTab'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/nerdcommenter'
+
+" http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
+if &term =~ "xterm.*"
+    let &t_ti = &t_ti . "\e[?2004h"
+    let &t_te = "\e[?2004l" . &t_te
+    function XTermPasteBegin(ret)
+        set pastetoggle=<Esc>[201~
+        set paste
+        return a:ret
+    endfunction
+    map <expr> <Esc>[200~ XTermPasteBegin("i")
+    imap <expr> <Esc>[200~ XTermPasteBegin("")
+    cmap <Esc>[200~ <nop>
+    cmap <Esc>[201~ <nop>
+endif
 
 "http://vim.wikia.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix
 "Clear the PAGER environment variable inside of Vim. This is to handle the
