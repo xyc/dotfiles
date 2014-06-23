@@ -10,9 +10,13 @@ Bundle 'altercation/vim-colors-solarized'
 set number
 syntax enable
 set background=dark
+call togglebg#map("<F5>")
+let term_program=$TERM_PROGRAM
 if !has("gui_running")
-    let g:solarized_termtrans=1
-"    let g:solarized_termcolors=256 " Needed for OS X Terminal.app
+    let g:solarized_termtrans=0
+    if term_program=="Apple_Terminal" 
+        let g:solarized_termcolors=256 " Needed for OS X Terminal.app
+    endif
 endif
 colorscheme solarized
 
@@ -52,7 +56,10 @@ filetype plugin on
 autocmd FileType js setlocal noexpandtab shiftwidth=4 omnifunc=javascriptcomplete
 
 Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdcommenter'
+
+let mapleader = ","
+" :help NERDCommenter
+Bundle 'scrooloose/nerdcommenter' 
 
 " http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
 if &term =~ "xterm.*"
