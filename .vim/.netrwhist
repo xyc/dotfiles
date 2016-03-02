@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/xiaoyi/Oracle/timezone'
-let g:netrw_dirhist_2='/Users/xiaoyi/Desktop/Father us trip Apr 2014/custom officer.pages'
-let g:netrw_dirhist_3='/Users/xiaoyi/Desktop/Father us trip Apr 2014'
-let g:netrw_dirhist_4='/Users/xiaoyi/Desktop'
